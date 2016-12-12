@@ -1,0 +1,66 @@
+﻿<div class="page-header text-center">
+    <h1>{{player.Name}}</h1>
+</div>
+
+<p ng-show="message.length" class="alert alert-info">{{message}}</p>
+
+<form novalidate name="playerForm" class="row" ng-submit="toSubmit()">
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Name</label>
+            <input ng-model="player.Name" name="Name" class="form-control" required ng-maxlength="20">
+            <span ng-show="playerForm.$submitted && playerForm.Name.$error.required" class="form-control alert-danger">
+                Required name
+            </span>
+            <span ng-show="playerForm.$submitted && playerForm.Name.$error.maxlength" class="form-control alert-danger">
+                Name must be 20 characters or less
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Club</label>
+            <input ng-model="player.Club" name="Club" class="form-control" required>
+            <span ng-show="playerForm.$submitted && playerForm.Club.$error.required" class="form-control alert-danger">
+                Required club
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Country</label>
+            <input ng-model="player.Country" name="Country" class="form-control" required>
+            <span ng-show="playerForm.$submitted && playerForm.Country.$error.required" class="form-control alert-danger">
+                Required country
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Age</label>
+
+            <select name="Age" required
+                    ng-model="player.Age"
+                    ng-options="x for x in ages"
+                    class="form-control">
+                <option value="">Choice an age</option>
+            </select>
+            <span ng-show="playerForm.$submitted && playerForm.Age.$error.required" class="form-control alert-danger">
+                Required age
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Picture URL</label>
+            <input ng-model="player.PictureUrl" name="PictureUrl" class="form-control" required>
+            <span ng-show="playerForm.$submitted && playerForm.PictureUrl.$error.required" class="form-control alert-danger">
+                Picture URL required
+            </span>
+        </div>
+
+        <a href="#/" class="btn btn-default fa fa-arrow-left" style="font-size:16px;"> Cancel</a>
+        <button type="submit" class="btn btn-primary fa fa-save" ng-disabled="playerForm.$invalid"> Save</button>
+    </div>
+
+    <div class="col-md-6">
+        <custom-picture url="{{player.PictureUrl}}" title="{{player.Name}}"></custom-picture>
+    </div>
+</form>

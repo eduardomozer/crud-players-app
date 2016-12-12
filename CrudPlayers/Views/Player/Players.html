@@ -1,0 +1,52 @@
+﻿<div class="jumbotron">
+    <h1 class="text-center">Players</h1>
+</div>
+
+<p ng-show="message.length" class="alert alert-info">{{message}}</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <a href="#/player/add" style="font-size: 16px;" class="btn btn-primary fa fa-plus"> Add</a>
+        </form>
+    </div>
+</div>
+
+<p></p>
+
+<div class="row">
+    <div class="col-md-12">
+        <input ng-model="customFilter" ng-model-options="{debounce: 500}" class="form-control" style="font-size: 18px;" placeholder="Filter" />
+    </div>
+</div>
+
+<p></p>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover table-bordered table-condensed">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Club</th>
+                <th>Country</th>
+                <th>Age</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr ng-repeat="player in players | filter: customFilter">
+                <td class="col-md-1">{{player.Id}}</td>
+                <td class="col-md-2">{{player.Name}}</td>
+                <td class="col-md-2">{{player.Club}}</td>
+                <td class="col-md-2">{{player.Country}}</td>
+                <td class="col-md-1">{{player.Age}}</td>
+                <td class="col-md-1">
+                    <a href="#/player/edit/{{player.Id}}" class="btn btn-default btn-block fa fa-pencil-square-o" style="font-size: 16px;"></a>
+                </td>
+                <td class="col-md-1">
+                    <danger-button action="delete(player)" icon="fa fa-trash-o" customStyle="font-size: 16px;"></danger-button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
