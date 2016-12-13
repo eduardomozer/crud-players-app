@@ -12,10 +12,7 @@ angular.module('crudPlayersApp')
         playerResource.get({ id: $routeParams.id },
             function (player) {
                 $scope.player = player;
-
-                for (var i = 1; i <= 100; i++) {
-                    $scope.ages.push(i);
-                }
+                $scope.ages = getAges();
             },
             function (error) {
                 console.log(error);
@@ -23,9 +20,7 @@ angular.module('crudPlayersApp')
             });
     }
     else {
-        for (var i = 1; i <= 100; i++) {
-            $scope.ages.push(i);
-        }
+        $scope.ages = getAges();
     }
 
     $scope.toSubmit = function () {
@@ -41,7 +36,7 @@ angular.module('crudPlayersApp')
                         console.log(error);
                     });
             }
-            // Create
+                // Create
             else {
                 playerResource.save($scope.player,
                     function () {
@@ -54,6 +49,15 @@ angular.module('crudPlayersApp')
                     });
             }
         }
+    };
+
+    function getAges() {
+        var ages = [];
+
+        for (var i = 1; i <= 100; i++) {
+            ages.push(i);
+        }
+        return ages;
     };
 
 });

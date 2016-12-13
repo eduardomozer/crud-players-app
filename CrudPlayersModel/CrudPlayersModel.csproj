@@ -67,6 +67,7 @@
       <DependentUpon>CrudPlayersModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
   </ItemGroup>
   <ItemGroup>

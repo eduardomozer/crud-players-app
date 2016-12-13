@@ -6,3 +6,11 @@ D:\development\dot-net\crud-players\CrudPlayers\CrudPlayersModel\bin\Debug\Entit
 D:\development\dot-net\crud-players\CrudPlayers\CrudPlayersModel\obj\Debug\CrudPlayersModel.csprojResolveAssemblyReference.cache
 D:\development\dot-net\crud-players\CrudPlayers\CrudPlayersModel\obj\Debug\CrudPlayersModel.dll
 D:\development\dot-net\crud-players\CrudPlayers\CrudPlayersModel\obj\Debug\CrudPlayersModel.pdb
+D:\development\dot-net\crud-players-app\CrudPlayersModel\bin\Debug\CrudPlayersModel.dll.config
+D:\development\dot-net\crud-players-app\CrudPlayersModel\bin\Debug\CrudPlayersModel.dll
+D:\development\dot-net\crud-players-app\CrudPlayersModel\bin\Debug\CrudPlayersModel.pdb
+D:\development\dot-net\crud-players-app\CrudPlayersModel\bin\Debug\EntityFramework.dll
+D:\development\dot-net\crud-players-app\CrudPlayersModel\bin\Debug\EntityFramework.xml
+D:\development\dot-net\crud-players-app\CrudPlayersModel\obj\Debug\CrudPlayersModel.csprojResolveAssemblyReference.cache
+D:\development\dot-net\crud-players-app\CrudPlayersModel\obj\Debug\CrudPlayersModel.dll
+D:\development\dot-net\crud-players-app\CrudPlayersModel\obj\Debug\CrudPlayersModel.pdb

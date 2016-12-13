@@ -4,16 +4,16 @@ using System.Linq;
 
 namespace CrudPlayersModel.Repositories
 {
-    public interface IPlayerRepository
-    {
-        void CreatePlayer(Player player);
-        List<Player> GetPlayers();
-        Player GetPlayerById(int id);
-        void UpdatePlayer(Player player);
-        void DeletePlayer(int id);
-    }
+    //public interface IPlayerRepository
+    //{
+    //    void Create(Player player);
+    //    List<Player> GetPlayers();
+    //    Player GetById(int id);
+    //    void Update(Player player);
+    //    void Delete(int id);
+    //}
 
-    public class PlayerRepository : IPlayerRepository
+    public class PlayerRepository : IGenericRepository<Player>
     {
         private crudplayersEntities Context = null;
 
@@ -25,29 +25,29 @@ namespace CrudPlayersModel.Repositories
             }
         }
 
-        public void CreatePlayer(Player player)
+        public void Create(Player player)
         {
             Context.Players.Add(player);
             Context.SaveChanges();
         }
 
-        public Player GetPlayerById(int id)
+        public Player GetById(int id)
         {
             return Context.Players.Where(p => p.Id == id).SingleOrDefault();
         }
 
-        public List<Player> GetPlayers()
+        public List<Player> GetAll()
         {
             return Context.Players.ToList();
         }
 
-        public void UpdatePlayer(Player player)
+        public void Update(Player player)
         {
             Context.Entry(player).State = EntityState.Modified;
             Context.SaveChanges();
         }
 
-        public void DeletePlayer(int id)
+        public void Delete(int id)
         {
             Player player = Context.Players.Where(p => p.Id == id).SingleOrDefault();
             Context.Players.Remove(player);

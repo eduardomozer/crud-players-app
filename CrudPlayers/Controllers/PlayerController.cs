@@ -10,17 +10,17 @@ namespace CrudPlayers.Controllers
 {
     public class PlayerController : ApiController
     {
-        private IPlayerRepository PlayerRepository;
-
-        public PlayerController()
+        private PlayerRepository _PlayerRepository;
+        private PlayerRepository PlayerRepository
         {
-            PlayerRepository = new PlayerRepository();
+            get { return _PlayerRepository ?? (_PlayerRepository = new PlayerRepository()); }
+            set { _PlayerRepository = value; }
         }
 
         // GET api/player
         public HttpResponseMessage Get()
         {
-            var players = PlayerRepository.GetPlayers();
+            var players = PlayerRepository.GetAll();
 
             if (players == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -28,10 +28,10 @@ namespace CrudPlayers.Controllers
             return Request.CreateResponse<IEnumerable<Player>>(HttpStatusCode.OK, players);
         }
 
-        // GET api/player/5
+        // GET api/player/:id
         public HttpResponseMessage Get(int id)
         {
-            var player = PlayerRepository.GetPlayerById(id);
+            var player = PlayerRepository.GetById(id);
 
             if (player == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -44,7 +44,7 @@ namespace CrudPlayers.Controllers
         {
             try
             {
-                PlayerRepository.CreatePlayer(player);
+                PlayerRepository.Create(player);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception)
@@ -53,12 +53,12 @@ namespace CrudPlayers.Controllers
             }
         }
 
-        // PUT api/player/5
+        // PUT api/player
         public HttpResponseMessage Put([FromBody]Player player)
         {
             try
             {
-                PlayerRepository.UpdatePlayer(player);
+                PlayerRepository.Update(player);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception)
@@ -67,12 +67,12 @@ namespace CrudPlayers.Controllers
             }
         }
 
-        // DELETE api/player/5
+        // DELETE api/player/:id
         public HttpResponseMessage Delete(int id)
         {
             try
             {
-                PlayerRepository.DeletePlayer(id);
+                PlayerRepository.Delete(id);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception)
