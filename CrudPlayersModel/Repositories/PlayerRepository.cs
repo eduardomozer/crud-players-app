@@ -4,18 +4,14 @@ using System.Linq;
 
 namespace CrudPlayersModel.Repositories
 {
-    //public interface IPlayerRepository
-    //{
-    //    void Create(Player player);
-    //    List<Player> GetPlayers();
-    //    Player GetById(int id);
-    //    void Update(Player player);
-    //    void Delete(int id);
-    //}
-
     public class PlayerRepository : IGenericRepository<Player>
     {
-        private crudplayersEntities Context = null;
+        private crudplayersEntities _Context;
+        private crudplayersEntities Context
+        {
+            get { return _Context ?? (_Context = new crudplayersEntities()); }
+            set { _Context = value; }
+        }
 
         public PlayerRepository()
         {
