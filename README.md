@@ -1,6 +1,6 @@
 # crud-players-app
 
-_A small web application that uses angularjs, bootstrap, C# .NET and web api._
+_A small web application that uses angularjs, bootstrap, C# .NET and Web API._
 ## Installation
 
 It is necessary install MySQL database;
